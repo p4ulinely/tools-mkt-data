@@ -1,14 +1,14 @@
 {
   "name": "tools-mkt-data",
   "version": "1.0.0",
-  "description": "",
+  "description": "API para dados e análise de dados no mercado financeiro",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node index.js",
     "start": "node index.js"
   },
-  "author": "",
+  "author": "p4ulinely",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
