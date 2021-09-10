@@ -21,16 +21,18 @@ mongoose.connect(process.env.CONNECTION_STRING_BD, {
 // mongoose.set('useUnifiedTopology', true)
 
 // //////////////////////////////////////////// models
-requireDir('./src/models')
+requireDir('./src/models', { recurse: true });
 
 // //////////////////////////////////////////// rotas 
-app.get('/', (req, res) => {
-	res.json({ api: "meus-trends-v1" })
-})
-app.use('/nlp', require('./src/routes/NlpRoutes'));
-app.use('/indfut', require('./src/routes/IndfutRoutes'));
-app.use('/twitter', require('./src/routes/TwitterRoutes'));
+const versao1 = "v1";
 
+app.get('/', (req, res) => { res.json({ api: "meus-trends-v1" }) });
+app.use(`/${versao1}/nlp`, require('./src/routes/NlpRoutes'));
+app.use(`/${versao1}/indfut`, require('./src/routes/IndfutRoutes'));
+app.use(`/${versao1}/twitter`, require('./src/routes/TwitterRoutes'));
+app.use(`/${versao1}/dolfut`, require('./src/routes/DolfutRoutes'));
+
+// //////////////////////////////////////////// porta 
 app.listen(port, () => {
     console.log(`On PORT ${port}!`)
-})
+});

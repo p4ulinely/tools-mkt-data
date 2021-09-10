@@ -16,9 +16,12 @@ const client = new twitter({
     access_token_secret: process.env.ACCESS_TOKEN_SECRET
 })
 
-const perfisFintwit = ["cafecomferri", "albuquerque_af", "hbredda", "fernandocluiz",
-    "josuenunes", "PabloSpyer", "quantzed", "MeninRibeiro",
-    "ThiagoNigro", "helocruz", "FariaLimaElevat", "sf2invest"]
+const perfisFintwit = [
+    "cafecomferri", "albuquerque_af", "hbredda", "fernandocluiz", "josuenunes", 
+    "PabloSpyer", "quantzed", "MeninRibeiro", "ThiagoNigro", "helocruz", 
+    "FariaLimaElevat", "sf2invest", "jlbraga", "PLynchado", "IVANKRAISER",
+    "jcamargonyc", "lnunesjr", "leononatotrader", "israel_massa", "THIAGOSALOMAO",
+    "rafaelbboa", "renoirvieira", "femisapien_z", "OgroWallSt", "KIMPAIFFER"]
 
 module.exports = {
     async getTweets(req, res){
