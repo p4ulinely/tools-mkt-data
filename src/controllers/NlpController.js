@@ -6,12 +6,12 @@ module.exports = {
             let frasePOST = req.body.frase;
 
             if (frasePOST === "")
-                res.status(400).json({
+                return res.status(400).json({
                     error: "informe a 'frase'"
                 });
 
             if (!(typeof(frasePOST) == "string"))
-                res.status(400).json({
+                return res.status(400).json({
                     error: "informe a 'frase' como um string"
                 });
 
@@ -34,12 +34,12 @@ module.exports = {
             let frasesPOST = req.body.frases;
             
             if (!frasesPOST)
-                res.status(400).json({
+                return res.status(400).json({
                     error: "informe as 'frases'"
                 });
 
             if (!Array.isArray(frasesPOST))
-                res.status(400).json({
+                return res.status(400).json({
                     error: "as 'frases' têm que estar em um formato de array"
                 });
 
