@@ -4,7 +4,7 @@ const requireDir = require('require-dir')
 require('dotenv-safe').config()
 
 // iniciando app
-const port = process.env.PORT || 8000
+const port = process.env.PORT || 3000
 const app = express()
 app.use(express.json())
 
@@ -24,6 +24,9 @@ mongoose.connect(process.env.CONNECTION_STRING_BD, {
 requireDir('./src/models')
 
 // //////////////////////////////////////////// rotas 
+app.get('/', (req, res) => {
+	res.json({ api: "meus-trends-v1" })
+})
 app.use('/nlp', require('./src/routes/NlpRoutes'));
 app.use('/indfut', require('./src/routes/IndfutRoutes'));
 app.use('/twitter', require('./src/routes/TwitterRoutes'));
