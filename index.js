@@ -1,19 +1,33 @@
-const express = require('express');
-require("dotenv-safe").config();
-const cors = require('cors');
+const express = require('express')
+const mongoose = require('mongoose')
+const requireDir = require('require-dir')
+require('dotenv-safe').config()
 
-//iniciando
-const app = express();
-app.use(express.json());
-app.use(cors());
+// iniciando app
+const port = process.env.PORT || 8000
+const app = express()
+app.use(express.json())
 
-// rotas
-app.get('/', (req, res) => {
-	res.json({ api: "tools-mkt-data_v1" });
+// //////////////////////////////////////////// BD
+mongoose.connect(process.env.CONNECTION_STRING_BD, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}).then(() => {
+    console.log(`MongoDB is on!`)
+}).catch(err => {
+    console.log(`MongoDB: ${err}`)
 })
-app.use('/nlp', require('./src/routes/NlpRoutes'));
+// mongoose.set('useFindAndModify', true)
+// mongoose.set('useUnifiedTopology', true)
 
-// porta
-app.listen(process.env.PORT || 8000, () => {
-	console.log('Server is On (8000)!');
+// //////////////////////////////////////////// models
+requireDir('./src/models')
+
+// //////////////////////////////////////////// rotas 
+app.use('/nlp', require('./src/routes/NlpRoutes'));
+app.use('/indfut', require('./src/routes/IndfutRoutes'));
+app.use('/twitter', require('./src/routes/TwitterRoutes'));
+
+app.listen(port, () => {
+    console.log(`On PORT ${port}!`)
 })
