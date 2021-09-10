@@ -25,7 +25,7 @@ module.exports = {
         try {
 
             let perfil = req.params.perfil || "twitter"
-            let ult_type = req.quey.ult_type || "mixed"
+            let ult_type = req.query.ult_type || "mixed"
             let tweets = []
 
             console.log(`requesting tweets de "${perfil}"...`)
