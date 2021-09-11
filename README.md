@@ -1,4 +1,4 @@
-# https://tools-mkt-data.herokuapp.com/v1
+# base: https://tools-mkt-data.herokuapp.com/v1
 
 API para dados e análise de dados no mercado financeiro.
 
@@ -39,3 +39,8 @@ API para dados e análise de dados no mercado financeiro.
   - return: array
 - **GET**: /twitter/pordata/itweets => retorna a quantidade de tweets do BD, agrupado por data (não paginado).
   - return: array
+
+### gtrends 
+- **GET**: /gtrends/tempoReal?geo=BR&category=all&hl=pt-BR => retorna strings de buscas e artigos relacionados em tempo real, direto do google.
+- **GET**: /gtrends/tendenciasDia?geo=BR&date=09-11-21&hl=pt-BR => retorna strings de buscas e artigos relacionados mais buscados do dia, direto do google.
+- **GET**: /gtrends/frequenciasTendenciasDia?geo=BR&date=09-11-21&hl=pt-BR&limit=15 => com base nas tendências do dia, retorna títulos das notícias atomizados e ordenados por relevância.

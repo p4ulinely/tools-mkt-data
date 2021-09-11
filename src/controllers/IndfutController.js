@@ -1,9 +1,11 @@
-const mongoose = require('mongoose')
-const Indfut = mongoose.model('Indfut')
-const Fintwit = mongoose.model('Fintwit')
-const { ttoj, tryToFloat, trechoHtmlDeLink } = require('./../services/metodos')
-const consultas_mdb = require('./../models/consultas')
-const SentimentosPalavras = mongoose.model('SentimentosPalavras')
+const mongoose = require('mongoose');
+
+const { ttoj, tryToFloat, trechoHtmlDeLink } = require('./../services/metodos');
+const consultas_mdb = require('./../models/consultas');
+
+const Indfut = mongoose.model('Indfut');
+const Fintwit = mongoose.model('Fintwit');
+const SentimentosPalavras = mongoose.model('SentimentosPalavras');
 
 module.exports = {
     async coletarDadosHistoricos(req, res) {

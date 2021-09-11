@@ -1,4 +1,4 @@
-const stopwords = require('./stop_words_pt');
+const eUmaStopWord = require('./stop_words_pt');
 const { listaCaracteresProibidos } = require('./caracteres_proibidos');
 const fs = require('fs');
 
@@ -144,7 +144,7 @@ const atomizadorDeFrase = frase => {
         if(palavra.length < 2) continue; // elimina letras
         if(eUmaURL(palavra)) continue; // elimina urls
         // if(palavra.indexOf('@') != -1) continue; // elimina mencoes
-        // if(stopwords.eUmaStopWord(palavra)) continue; // elimina stopwords
+        if(eUmaStopWord(palavra)) continue; // elimina stopwords
 
         // elimina caracteres proibidos
         let charsFiltrados = palavra.split('').filter(char => ( 

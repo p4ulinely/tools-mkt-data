@@ -1,11 +1,12 @@
-const twitter = require('twitter-lite')
-const mongoose = require('mongoose')
-const Fintwit = mongoose.model('Fintwit')
-const SentimentosPalavras = mongoose.model('SentimentosPalavras')
-const nlp = require('./../services/nlp')
-require('dotenv-safe').config()
-const consultas_mdb = require('./../models/consultas')
-// const fs = require('fs')
+const twitter = require('twitter-lite');
+const mongoose = require('mongoose');
+require('dotenv-safe').config();
+const nlp = require('./../services/nlp');
+const consultas_mdb = require('./../models/consultas');
+// const fs = require('fs');
+
+const Fintwit = mongoose.model('Fintwit');
+const SentimentosPalavras = mongoose.model('SentimentosPalavras');
 
 const client = new twitter({
     subdomain: "api", // "api" is the default (change for other subdomains)
@@ -14,14 +15,14 @@ const client = new twitter({
     consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
     access_token_key: process.env.ACCESS_TOKEN,
     access_token_secret: process.env.ACCESS_TOKEN_SECRET
-})
+});
 
 const perfisFintwit = [
     "cafecomferri", "albuquerque_af", "hbredda", "fernandocluiz", "josuenunes", 
     "PabloSpyer", "quantzed", "MeninRibeiro", "ThiagoNigro", "helocruz", 
     "FariaLimaElevat", "sf2invest", "jlbraga", "PLynchado", "IVANKRAISER",
     "jcamargonyc", "lnunesjr", "leononatotrader", "israel_massa", "THIAGOSALOMAO",
-    "rafaelbboa", "renoirvieira", "femisapien_z", "OgroWallSt", "KIMPAIFFER"]
+    "rafaelbboa", "renoirvieira", "femisapien_z", "OgroWallSt", "KIMPAIFFER"];
 
 module.exports = {
     async getTweets(req, res){
