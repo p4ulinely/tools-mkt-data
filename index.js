@@ -1,22 +1,24 @@
-const express = require('express')
-const mongoose = require('mongoose')
-const requireDir = require('require-dir')
-require('dotenv-safe').config()
+const express = require('express');
+const mongoose = require('mongoose');
+const requireDir = require('require-dir');
+require('dotenv-safe').config();
+const cors = require('cors');
 
 // iniciando app
-const port = process.env.PORT || 3000
-const app = express()
-app.use(express.json())
+const port = process.env.PORT || 3000;
+const app = express();
+app.use(express.json());
+app.use(cors());
 
 // //////////////////////////////////////////// BD
 mongoose.connect(process.env.CONNECTION_STRING_BD, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => {
-    console.log(`MongoDB is on!`)
+    console.log(`MongoDB is on!`);
 }).catch(err => {
-    console.log(`MongoDB: ${err}`)
-})
+    console.log(`MongoDB: ${err}`);
+});
 // mongoose.set('useFindAndModify', true)
 // mongoose.set('useUnifiedTopology', true)
 
