@@ -64,6 +64,9 @@ module.exports = {
 				escadaPontos.push(pontosVwap[i])				
 			}
 
+			pontosFechamento.sort((a, b) => b-a)
+			pontosAjuste.sort((a, b) => b-a)
+			pontosVwap.sort((a, b) => b-a)
 			escadaPontos.sort((a, b) => b-a)
 
 			let pontos = {
